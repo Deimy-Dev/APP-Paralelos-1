@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1062985917339",
+    "project_id": "bookwise-2a19e",
+    "storage_bucket": "bookwise-2a19e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062985917339:android:235a73f9fffc5b1c90773e",
+        "android_client_info": {
+          "package_name": "com.example.app1_paralelos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFXFOisPGPKtbxInX7697eFFRJz0qKPGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
