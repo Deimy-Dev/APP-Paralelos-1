@@ -1,3 +1,4 @@
+import 'package:app1_paralelos/views/user_preferences_screen.dart';
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import '../utils/session_manager.dart';
@@ -29,7 +30,7 @@ class RegisterScreen extends StatelessWidget {
               final user = await authService.register(emailController.text, passwordController.text);
               if (user != null) {
                 await SessionManager.saveEmail(user.email ?? '');
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => UserPreferencesScreen()));
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al registrar')));
               }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'books/my_books_screen.dart';
-import 'package:app1_paralelos/library/library_screen.dart';
-import 'summaries/summary_screen.dart';
+import 'package:app1_paralelos/library/book_screen.dart';
 import 'profile/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,9 +12,14 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    MyBooksScreen(),        // Pantalla principal
-    //LibraryScreen(),     // Librería (con API en el futuro)
-    SummaryScreen(),      // Resumen de lectura mensual
+    MyBooksScreen(),       // Pantalla principal
+    BooksScreen(
+      authors: [],
+      categories: [],
+      languages: [],
+      format: 'Digital',
+      pageRange: RangeValues(100, 500),
+    ),        // Librería (con API en el futuro)
     ProfileScreen(),     // Perfil y logout
   ];
 
@@ -25,8 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('Screens count: ${_screens.length}');
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: Builder(
+        builder: (_) {
+          try {
+            return _screens[_selectedIndex];
+          } catch (e) {
+            return Center(child: Text('Error: $e'));
+          }
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -35,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'Mis libros'),
           BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Librería'),
-          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: 'Resumen'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
       ),
